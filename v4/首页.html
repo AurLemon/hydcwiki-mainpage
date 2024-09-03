@@ -1,0 +1,285 @@
+<!-- 
+    ** 声明 **
+    这个首页是我在 2022 年 12 月的时候编写的，完全参考 StarCitizen Wiki（https://starcitizen.tools）的样式，其中有一些东西是我初学前端时写的，有些写法很奇怪，各位看着复制！！自行修改！！
+
+    有一些写法现在真的看不下去，如果真的要的自己拿去还是重写一下 CSS 比较好。
+
+    原链接：https://wiki.hydcraft.cn/index.php?title=%E9%A6%96%E9%A1%B5V4&action=edit
+-->
+
+<!-- 页眉 -->
+<div class="home-header">
+<h1 class="header-title" id="title">Welcome to HydCraft Wiki! :D</h1>
+<p class="header-subtitle">这里是氢气工艺服务器的维基网站哦！请尽情的往这个网站❤注❤入❤知识吧！(*°▽°*)八(*°▽°*)♪</p>
+</div>
+
+<!-- Nav -->
+<div class="home-grid">
+<div class="home-card home-card--button">
+<div class="home-card__background">[[文件:nav_overview.png|300px|link=HydCraft_Wiki:信息概览]]</div>
+<div class="home-card__foreground home-card__navimgtext">信息概览</div>
+</div>
+<div class="home-card home-card--button">
+<div class="home-card__background">[[文件:nav_manage.png|300px|link=HydCraft_Wiki:管理]]</div>
+<div class="home-card__foreground home-card__navimgtext">管理</div>
+</div>
+<div class="home-card home-card--button">
+<div class="home-card__background">[[文件:nav_develop.png|300px|link=HydCraft_Wiki:发展]]</div>
+<div class="home-card__foreground home-card__navimgtext">发展</div>
+</div>
+<div class="home-card home-card--button">
+<div class="home-card__background">[[文件:nav_culture.png|300px|link=HydCraft_Wiki:文化]]</div>
+<div class="home-card__foreground home-card__navimgtext">文化</div>
+</div>
+</div>
+
+<!-- 通知 -->
+<!--{{PageTips|Type=b|Align=C|Text=为提高安全性，自1月11日起要求新注册用户验证邮箱。请未验证邮箱的注册用户尽快[[Special:确认电子邮件|确认邮箱]]，否则将无法编辑。}}-->
+
+<div class="home-grid">
+<div class="home-card home-card--col2 home-card--row2 home-card--button" style="height:auto;">
+<div class="home-card__background">[[文件:{{首页/Nav_Vision}}|3000px|{{首页/Nav_Vision_Link}}]]</div>
+<div class="home-card__foreground" style="padding:15px; bottom:0px;">
+<div class="home-card__label">视觉</div>
+{{首页/Nav_VisionTag}}
+</div>
+</div>
+
+<div class="home-card home-card--col2 home-card--row2 home-card__flex">
+<div class="home-card__label"><font color="#4169E1">快速访问</font></div>
+<div class="home-link home-grid--col2">
+<div class="home-link__button">[http://helium-map.hydcraft.cn/ 六周目卫星地图]</div>
+<div class="home-link__button">[http://helium-rail.hydcraft.cn/ 六周目铁路地图]</div>
+<div class="home-link__button">[https://bbs.oxygenstudio.cn/ 氧气社区]</div>
+<div class="home-link__button">[[行政区列表]]</div>
+</div>
+</div>
+
+<div class="home-card home-card--col2 home-card--row2 home-card__flex">
+<div class="home-card__label">新玩家入服指引</div>
+<div class="home-link home-grid--col2">
+<div class="home-link__button">[https://wj.qq.com/s2/10653039/a92f/ 入服申请问卷]</div>
+<div class="home-link__button">[https://jq.qq.com/?_wv=1027&k=hhZZ0Owd 加入门户群]</div>
+<div class="home-link__button">[https://www.bilibili.com/video/BV1ae4y1Y77r/ 玩家指南]</div>
+<div class="home-link__button">[[客户端下载]]</div>
+</div>
+</div>
+
+<div class="home-card home-card--col2 home-card--row2 home-card__flex">
+<div class="home-card__label">站点信息</div>
+<div class="home-link home-grid--col2">
+<div class="home-link__button">[[特殊:新建文件|已上传文件]]</div>
+<div class="home-link__button">[[特殊:文件列表|文件列表]]</div>
+<div class="home-link__button">[[特殊:日志|所有日志]]</div>
+<div class="home-link__button">[[特殊:所有页面|所有页面]]</div>
+<div class="home-link__button">[[特殊:版本|版本]]</div>
+<div class="home-link__button">[[HydCraft_Wiki:关于|关于]]</div>
+</div>
+</div>
+
+<templatestyles src="Template:Progress/style.css" />
+<div class="home-card home-card--col2 home-card--row2 home-card__flex">
+<div class="home-card__label">服务器在线人数</div>
+<h3 class="home-card__header" style="padding-bottom:5px;">[[七周目]]</h3>
+<div style="display:flex; padding-bottom:10px;">
+<div class="home-card__label" id="live-info-start" style="display:none; margin-right:5px;"><span class="tips-icon">[[File:Done.svg|x16px|link=]]</span> 服务端已启动。</div>
+<div class="home-card__label" id="live-info-stop" style="display:none; margin-right:5px;"><span class="tips-icon">[[File:Close.svg|x16px|link=]]</span> 服务端未启动（崩溃或重启）。</div>
+</div>
+<div class="g1-container" style="width:100%">
+<div class="g1-progress" id="live-player-progress" style="width: 0%; transition: all 0.4s ease;"></div>
+</div>
+<div style="display:flex;">
+<div class="home-card__label" id="live-player-status-info" style="margin-top:10px; margin-right:10px; flex:7;">人数信息存在3分钟左右的延迟，具体以实际情况为准。</div>
+<div class="home-card__label" id="live-player-status" style="margin-top:10px; font-weight:bold;">正在加载信息……</div>
+</div>
+</div>
+
+<div class="home-card home-card--col2 home-card--row2 home-card__flex">
+<h3 class="home-card__header">[[HydCraft_Wiki:编辑|开始编辑]]</h3>
+<div class="home-card__label" style="margin-top:5px; margin-bottom:15px;">作为服务器的知识库，维基网站在服务器运行中发挥着极其重要的功能。欢迎诸位玩家编辑页面、新建页面，为完善网站贡献一份自己的力量。</div>
+<div style="display:flex; justify-content: space-between;">
+<div class="home-stats">
+<div class="home-stats__value">[[特殊:所有页面|{{NUMBEROFARTICLES}}]]</div>
+<div class="home-stats__unit">页面</div>
+</div>
+<div class="home-stats">
+<div class="home-stats__value">[[特殊:用户列表|{{NUMBEROFUSERS}}]]</div>
+<div class="home-stats__unit">用户</div>
+</div>
+<div class="home-stats">
+<div class="home-stats__value">[[特殊:统计|{{NUMBEROFEDITS}}]]</div>
+<div class="home-stats__unit">编辑次数</div>
+</div>
+</div>
+</div>
+
+<div class="home-card home-card--col2 home-card--row2 home-card__flex">
+<h3 class="home-card__header">[[捐赠]]</h3>
+<div class="home-card__label" style="margin-top:5px; margin-bottom:15px;">运营和维护服务器需要支出大量成本，作为公益服的我们深知资金对于服务器的影响。如果您愿意，欢迎您为服务器出一份力。</div>
+<div class="home-card home-card--button" style="background:rgb(166,127,242); padding:5px;">[https://afdian.net/a/HydCraft/ [[文件:Afdian_logo.png|x30px|link=]]]</div>
+</div>
+
+<div class="home-card home-card--col2 home-card--row2 home-card__flex">
+<h3 class="home-card__header">[[管理体制|理念]]</h3>
+<div class="home-card__label" style="margin-top:5px;">'''“快乐即游戏之目的”'''是我们的理念，服务器中的一切都以“重视体验”为目的。你可以在服务器内建设自己理想中的铁路或者城市，也可以在交流群内和群友讨论一条铁路的规划亦或城市规划。<br>保持“基友服”氛围的同时保持服务器具有一定的规模。祝各位玩家都能结识兴趣爱好相同或有共同话题的网友！</div>
+</div>
+
+<div class="home-card home-card--col2 home-card--row2 home-card__flex" style="border-color: #f18d8d; border-style: solid;">
+<div style="margin-bottom: 10px;">
+<div class="home-card__label">知ってるか</div>
+<h3 class="home-card__header">'''你知道吗？'''</h3>
+</div>
+<div class="home-card__label">
+<li>[[六周目]]本来会是1.18.2。</li>
+<li>[[杂色(玩家)|杂色]]除了玩黄油还喜欢打麻将。</li>
+<li>[[主城(玩家)|主城小姐姐]]比大家都大！（年龄上）</li>
+<li>我们QQ群被封过[[八七事件|两次]]哦！</li>
+<li>[[杂色(玩家)|杂色]]不喜欢别人叫他'''出老师'''。</li>
+<li>不觉得很酷吗</li>
+</div>
+</div>
+</div>
+
+<!-- Container -->
+<!-- row 1 -->
+<div class="home-grid">
+<div class="home-card home-card--col3 home-card--row3 home-card__flex">
+<div class="home-card__label">{{CURRENTMONTHNAME}}，{{CURRENTYEAR}}</div>
+<h3 class="home-card__header">'''公告'''</h3>
+<hr/>
+<div class="home-card__label">2023年1月14日</div>
+[[氢气工艺服务器第四届氢磷钨氪运动会|第四届氢磷钨氪运动会]]圆满落幕。
+<div class="home-card__label">2023年1月12日</div>
+[[氢气工艺服务器第四届氢磷钨氪运动会|第四届氢磷钨氪运动会]]细则公布，请见[https://wiki.hydcraft.cn/images/4/48/%E5%85%B3%E4%BA%8E%E4%B8%BE%E5%8A%9E%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AC%AC%E5%9B%9B%E5%B1%8A%E6%B0%A2%E7%A3%B7%E9%92%A8%E6%B0%AA%E8%BF%90%E5%8A%A8%E4%BC%9A%E7%9A%84%E9%80%9A%E7%9F%A5%E5%92%8C%E7%AC%AC%E5%9B%9B%E5%B1%8A%E6%B0%A2%E7%A3%B7%E9%92%A8%E6%B0%AA%E8%BF%90%E5%8A%A8%E4%BC%9A%E7%9A%84%E6%B5%81%E7%A8%8B%E4%B8%8E%E6%89%A7%E8%A1%8C%E6%96%B9%E6%A1%88.pdf 《关于举办服务器第四届氢磷钨氪运动会的通知和第四届氢磷钨氪运动会的流程与执行方案》]。
+<div class="home-card__label">2023年1月10日</div>
+[[氢气工艺服务器第四届氢磷钨氪运动会|第四届氢磷钨氪运动会]]将于2023年1月14日开幕，欢迎您的[https://wj.qq.com/s2/11486535/947f/ 参与]！
+<div class="home-card__label">2022年12月16日</div>
+首页已更新至第四版。'''不觉得很酷吗？'''旧版可见[[首页V3]]。
+</div>
+
+<div class="home-card home-card--col3 home-card--row3 home-card__flex"  id="adm-list">
+<div class="home-card__label">已经不是一般的管理了，必须要重拳出击！</div>
+<h3 class="home-card__header">'''管理公示栏'''</h3>
+<hr/>
+<div class="home-card__label">管理委员会</div>
+<!-- Admin1 -->
+<div style="padding-bottom:10px;/* background-image: linear-gradient(to right, red, white);*/">[[File:Aurora_Lemon_Pic.jpg|30px|link=[[柠檬(玩家)]]]] <font color="#4269E2">[[服主]]</font> | 柠檬 · Aurora_Lemon</div>
+<!-- Admin2 -->
+<div style="padding-bottom:10px;/* background-image: linear-gradient(to right, red, white);*/">[[File:zase.jpg|30px|link=[[杂色(玩家)]]]] <font color="#7360E2">[[正级管理]]</font> | 杂色 · Complex_Colors</div>
+<!-- Admin3 -->
+<div style="padding-bottom:10px;/* background-image: linear-gradient(to right, red, white);*/">[[File:xaw.jpg|30px|link=[[肖阿瓦(玩家)]]]] <font color="#7360E2">[[正级管理]]</font> | 肖阿瓦 · Xiao_awa_</div>
+<hr/>
+<div class="home-card__label">其他机构与人员见[[管理员|详情页]]:</div>
+<div class="home-link home-grid--col1">
+<div class="home-link__button">[[服务器文化委员会]]</div>
+</div>
+</div>
+<!-- row 2 -->
+<div class="home-card home-card--col3  home-card--row4 home-card__flex">
+<h3 class="home-card__header">'''建设 · 要闻'''</h3>
+<div class="home-grid" style="padding-bottom:10px;">
+<div class="home-card home-card--button" style="height:150px;">
+<div class="home-card__background">[[文件:Mp-poster_221215.png|500px|link=]]</div>
+<div class="home-card__foreground" style="bottom:0px; margin:0; padding-left:15px;><p style="color:white; font-size:16px; text-shadow: 2px 2px 4px #000000;">南屿大修小编组公交。</p></div>
+</div>
+</div>
+<div class="home-grid" style="padding-bottom:10px;">
+<div class="home-card home-card--button" style="height:150px;">
+<div class="home-card__background">[[文件:mp-poster_221215_2.png|500px|link=]]</div>
+<div class="home-card__foreground" style="bottom:0px; margin:0; padding-left:15px;><p style="color:white; font-size:16px; text-shadow: 2px 2px 4px #000000;">一玩家在南屿都政府前乱放牌子</p></div>
+</div>
+</div>
+</div>
+
+<div class="home-card  home-card--col3  home-card--row4 home-card__flex" id="friend-server">
+<div class="home-card__label">大好きだよ~</div>
+<h3 class="home-card__header">'''友好关系'''</h3>
+<hr/>
+<div class="home-card__label">服务器</div>
+<div class="info-box-container">
+*[[文件:Cloudsdale.png|{{MP-Inf-Font}}|link=]] [[Cloudsdale|Cloudsdale 服务器]]
+*[[文件:Fetarute.jpg|{{MP-Inf-Font}}|link=]] [[Fetarute|Fetarute 服务器]]
+*[[文件:氧气Logo白底.png|{{MP-Inf-Font}}|link=]] [[HOC Network|HOC Network 服务器]]
+*[[文件:TC-favicon.jpg|{{MP-Inf-Font}}|link=]] [[TangibleCraft|TangibleCraft 服务器]]
+*[[文件:Youter.jpg|{{MP-Inf-Font}}|link=]] [[Youter|Youter 服务器]]
+*[[文件:BZC.jpg|{{MP-Inf-Font}}|link=]] [[苯环工艺|苯环工艺服务器]]
+*[[文件:Hr.png|{{MP-Inf-Font}}|link=]] [[北武工艺|北武工艺服务器]]
+*[[文件:DollanCraft.png|{{MP-Inf-Font}}|link=]] [[东安工艺|东安工艺服务器]]
+*[[文件:Lindong.jpg|{{MP-Inf-Font}}|link=]] [[临东市服务器]]
+*[[文件:Vastsea.jpg|{{MP-Inf-Font}}|link=]] [[瀚海工艺|瀚海工艺服务器]]
+*[[文件:HarmonyCraft.png|{{MP-Inf-Font}}|link=]] [[花梦工艺|花梦工艺服务器]]
+*[[文件:ColaCraft.jpg|{{MP-Inf-Font}}|link=]] [[可乐工艺|可乐工艺服务器]]
+*[[文件:Wheat.jpg|{{MP-Inf-Font}}|link=]] [[麦子茶会|麦子茶会服务器]]
+*[[文件:PG.png|{{MP-Inf-Font}}|link=]] [[坪岗服务器]]
+*[[文件:Chiho.jpg|{{MP-Inf-Font}}|link=]] [[千穗工艺|千穗工艺服务器]]
+*[[文件:Qinein.jpg|{{MP-Inf-Font}}|link=]] [[清云工艺|清云工艺服务器]]
+*[[文件:ShanhaiiCraft.png|{{MP-Inf-Font}}|link=]] [[申海工艺|申海工艺服务器]]
+*[[文件:Xinghai.png|{{MP-Inf-Font}}|link=]] [[星海市服务器]]
+*[[文件:Yuchiu.jpg|{{MP-Inf-Font}}|link=]] [[翊秋工艺|翊秋工艺服务器]]
+*[[文件:Logo.png|{{MP-Inf-Font}}|link=]] [[樱花工艺|樱花工艺服务器]]
+</div>
+<div class="home-card__label">工作室</div>
+<div class="info-box-container">
+*[[文件:氧气Logo白底.png|{{MP-Inf-Font}}|link=]] [[氧气工作室]]
+</div>
+<div class="home-card__label">组织</div>
+<div class="info-box-container">
+*[[文件:Taolin.jpg|{{MP-Inf-Font}}|link=]] [[桃林组织]]
+*[[文件:CMTSA.jpg|{{MP-Inf-Font}}|link=]] [[中国MC交通服务器联盟]]
+</div>
+</div>
+
+<!-- row 4-->
+<div class="home-card--col3 home-card--row4" style="display: flex; justify-content: space-between; flex-direction: column;">
+<div class="home-card home-card--row3 home-card__flex" style="margin-bottom: 10px;">
+<h3 class="home-card__header">'''官方帐号'''</h3>
+<div class="home-card__label">哔哩哔哩</div>
+<div class="home-card home-card--button" style="background:rgb(255,171,195); margin-bottom:10px; padding:5px;">[https://space.bilibili.com/421235782 [[文件:Bilibili_Logo_Blue.svg|x30px|link=]]]</div>
+<div class="home-card__label">哔哩哔哩直播间（活动时可用）</div>
+<div class="home-card home-card--button" style="background:rgb(255,171,195); margin-bottom:10px; padding:5px;">[https://live.bilibili.com/ [[文件:Bilibili_Logo_Blue.svg|x30px|link=]]]</div>
+<div class="home-card__label">爱发电</div>
+<div class="home-card home-card--button" style="background:rgb(166,127,242); margin-bottom:10px; padding:5px;">[https://afdian.net/a/HydCraft/ [[文件:Afdian_logo.png|x30px|link=]]]</div>
+</div>
+
+<div class="home-card home-card--row3 home-card__flex">
+<div class="home-card__label">相关链接</div>
+<div class="home-link home-grid--col2">
+<div class="home-link__button">[http://h2.hydcraft.cn:16695/ 五周目卫星地图（直连）]</div>
+<div class="home-link__button">[http://helium-map.hydcraft.cn/ 六周目卫星地图]</div>
+<div class="home-link__button">[http://helium-rail.hydcraft.cn/ 六周目铁路地图]</div>
+<div class="home-link__button">[https://bbs.oxygenstudio.cn/categories/24/ 项目报备与报批]</div>
+</div>
+</div>
+</div>
+
+<div class="home-card home-card--col3 home-card--row4 home-card__flex">
+<h3 class="home-card__header">'''交流平台'''</h3>
+<div>
+<div class="home-card__label">主群</div>
+<div class="home-card home-card--button" style="background:rgb(18,183,245); margin-bottom:10px; padding:5px;">[https://jq.qq.com/?_wv=1027&k=GUzSmQ0U [[文件:qq_logo.png|x30px|link=]]]</div>
+<div class="home-card home-card--button" style="background:rgb(243,255,183); margin-bottom:10px; padding:5px;">[https://www.kookapp.cn/app/invite/DOpbvB [[文件:kook_logo.png|x30px|link=]]]</div>
+<div class="home-card home-card--button" style="background:rgb(42,174,103); margin-bottom:10px; padding:5px;">[https://wiki.hydcraft.cn/index.php?title=%E6%96%87%E4%BB%B6:WeChatJoin.png#/media/%E6%96%87%E4%BB%B6:WeChatJoin.png [[文件:WeChat_logo.png|x30px|link=]]]</div>
+</div>
+<div>
+<div class="home-card__label">门户群</div>
+<div class="home-card home-card--button" style="background:rgb(18,183,245); margin-bottom:10px; padding:5px;">[https://jq.qq.com/?_wv=1027&k=hhZZ0Owd [[文件:qq_logo.png|x30px|link=]]]</div>
+</div>
+<div>
+<div class="home-card__label">特殊群</div>
+<div class="home-card home-card--button" style="background:rgb(18,183,245); margin-bottom:10px; padding:5px;">[https://jq.qq.com/?_wv=1027&k=2btPixro [[文件:qq_logo.png|x30px|link=]]]</div>
+</div>
+</div>
+</div>
+
+<!-- 页脚 -->
+<div class="home-card" style="margin-top: 10px;" id="friend-link">
+<div class="home-card__label">欢迎互换啊~可以加[[柠檬(玩家)|他]]QQ细说！！</div>
+<div style="font-size:16px; color:var(--color-base--emphasized);">'''友链'''</div>
+<hr/>
+<div class="info-box-container">{{首页/友链信息}}</div>
+<hr/>
+<div class="home-card__label">[[文件:Verified.svg|x20px|link=]] 发自内心的感谢 Frost-ZX 长久以来对[[柠檬(玩家)|柠檬]]及[[氢气工艺|服务器]]无私的技术支持！</div>
+</div>
+
+<templatestyles src="Template:Mainpage.css"/>
+__NOTOC__
